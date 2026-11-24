@@ -3,203 +3,220 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GeoGrid · Tu energía, al costo justo de tu zona</title>
+<title>GeoGrid | Ingeniería energética y evaluación financiera · Biobío</title>
+<meta name="description" content="GeoGrid integra automatización, ingeniería energética y evaluación financiera para optimizar contratos eléctricos, demanda punta y respaldo en la Región del Biobío.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ===== 1. Tokens de diseño (marca GeoGrid) ===== */
-:root{
-  --steel:#2D557A; --steel-d:#1d3a56; --green:#68B478; --green-d:#4f9a60;
-  --bg:#FFFFFF; --bg-alt:#F8FAFC; --text:#1e2a38; --muted:#5b6b7c; --line:#e3e9f0; --card:#fff;
-  --hf:'Poppins','Plus Jakarta Sans',system-ui,sans-serif; --bf:'Inter',system-ui,sans-serif;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1a26; --bg-alt:#13222f; --text:#e8eef5; --muted:#9db0c3; --line:#243546; --card:#172a3b; --steel:#6fa0cf; --steel-d:#8db6dd}}
-/* ===== 2. Base ===== */
+ :root{--bg:#F8FAFC;--paper:#fff;--ink:#0F172A;--blue:#1E3A8A;--muted:#475569;--soft:#64748B;--line:#E2E8F0;--green:#059669;--mono:'JetBrains Mono',ui-monospace,monospace;--sans:'Inter','Plus Jakarta Sans',system-ui,sans-serif;--display:'Plus Jakarta Sans','Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
-body{font-family:var(--bf);color:var(--text);background:var(--bg);line-height:1.6}
-h1,h2,h3{font-family:var(--hf);color:var(--steel);line-height:1.15}
-.wrap{max-width:1120px;margin:auto;padding:0 20px}
-section{padding:84px 0}
-.alt{background:var(--bg-alt)}
-.eyebrow{color:var(--green-d);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
-h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:8px 0 14px;font-weight:700}
-.lead{color:var(--muted);max-width:640px}
-.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 1rem var(--bf);transition:transform .2s,box-shadow .2s,background .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-p{background:var(--green);color:#0d2a16;box-shadow:0 8px 20px -8px var(--green)}
-.btn-p:hover{background:var(--green-d);color:#fff}
-.btn-o{border:2px solid var(--steel);color:var(--steel);background:transparent}
-/* ===== 3. Header ===== */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:var(--display);line-height:1.16;letter-spacing:-.035em;color:var(--ink)}
+.wrap{width:min(1240px,100%);margin:auto;padding:0 28px}
+section{padding:92px 0}
+.alt{background:#F1F5F9}
+.mono,.eyebrow,.metric-value,.stat b,.result b,td:nth-child(3){font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{display:block;color:var(--blue);font-size:.72rem;font-weight:600;letter-spacing:.08em;line-height:1.5}
+h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:700;margin:8px 0 14px}
+.lead{max-width:700px;color:var(--muted)}
+.btn{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:10px 18px;border:1px solid transparent;border-radius:6px;text-decoration:none;cursor:pointer;font:600 .9rem var(--sans);transition:background .16s,color .16s,border-color .16s}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:var(--blue)}
+.btn-p{background:var(--green);color:#fff}.btn-p:hover{background:#047857}
+.btn-o{border-color:#CBD5E1;color:var(--ink);background:transparent}.btn-o:hover{border-color:var(--blue);color:var(--blue)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(248,250,252,.96);border-bottom:1px solid var(--line)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:19}
-nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-nav img{height:54px;width:auto;display:block}
-nav ul{display:flex;gap:26px;list-style:none;padding:0}
-nav a{color:var(--text);text-decoration:none;font-weight:500;font-size:.95rem}
-nav a:hover{color:var(--green-d)}
-.com path{stroke:#fff;stroke-width:1;cursor:pointer;transition:opacity .2s}.com:hover path,.com.on path{opacity:.82;stroke:#1e2a38;stroke-width:1.4}.lead-l{stroke:#5b6b7c;stroke-dasharray:2 2.5;stroke-width:.7}
-.menu{display:none;background:none;border:0;font-size:1.7rem;color:var(--steel);cursor:pointer}
-/* ===== 4. Hero + mapa ===== */
-.hero{padding:64px 0 80px;background:radial-gradient(900px 400px at 85% 0,rgba(104,180,120,.16),transparent),var(--bg)}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
-.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800}
-.hero h1 span{color:var(--green)}
-.hero p{margin:18px 0 28px;color:var(--muted);font-size:1.08rem}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.mapcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 24px 50px -28px rgba(45,85,122,.5)}
-.mapcard svg{width:100%;height:auto;display:block}
-.city{cursor:pointer}.city circle{transition:r .2s}.city:hover circle{r:9}
-.city text{font:600 11px var(--bf);fill:var(--text)}
-.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);padding:8px 6px 2px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
-#tip{min-height:44px;padding:8px 6px 0;font-size:.88rem;color:var(--steel)}
-/* ===== 5. Métricas ===== */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-40px;position:relative}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
-.stat b{display:block;font:800 1.9rem var(--hf);color:var(--steel)}
-.stat span{font-size:.85rem;color:var(--muted)}
-/* ===== 6. Tarjetas de servicios ===== */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -24px rgba(45,85,122,.55)}
-.ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--steel),var(--green));display:grid;place-items:center;margin-bottom:16px}
-.ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font-size:1.2rem;margin-bottom:8px}
-.card p,.card li{color:var(--muted);font-size:.95rem}
-.card ul{padding-left:18px;margin-top:10px}
-/* ===== 7. Peak Shaving: gráfico + simulador ===== */
-.two{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
-.panel svg{width:100%;height:auto}
-.sim label{display:flex;justify-content:space-between;font-weight:500;font-size:.9rem;margin:14px 0 6px}
+nav{height:76px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px}
+.brand-logo{display:block;height:44px;width:auto;object-fit:contain}
+nav ul{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,28px);list-style:none;padding:0}
+nav a{color:var(--muted);font-size:.84rem;font-weight:500;text-decoration:none;white-space:nowrap}
+nav a:hover{color:var(--blue)}
+nav .btn{color:#fff}
+.menu{display:none;background:none;border:1px solid var(--line);border-radius:6px;width:42px;height:42px;color:var(--ink);font-size:1.35rem;cursor:pointer}
+.hero{padding:64px 0 74px;background:var(--bg)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(430px,.96fr);gap:52px;align-items:center}
+.hero h1{max-width:720px;margin:16px 0 20px;font-size:clamp(2.25rem,4.2vw,3.55rem);font-weight:700;letter-spacing:-.055em}
+.hero-copy{max-width:700px;color:var(--muted);font-size:1.04rem;line-height:1.75}
+.hero-copy .mono{color:var(--ink);font-size:.92em}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);margin-top:42px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric{padding:18px 14px 18px 0}.metric+.metric{border-left:1px solid var(--line);padding-left:18px}
+.metric-value{display:block;color:var(--ink);font-size:1rem;font-weight:600;line-height:1.45}
+.metric-label{display:block;margin-top:5px;color:var(--soft);font-size:.75rem;line-height:1.45}
+.mapcard{overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.map-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line)}
+.map-heading .eyebrow{font-size:.66rem}
+.map-count{color:var(--soft);font:500 .68rem var(--mono);white-space:nowrap}
+.map-stage{padding:12px 18px 0}
+.mapcard svg{display:block;width:100%;height:auto}
+.com path{stroke:#fff;stroke-width:1;cursor:pointer;transition:opacity .16s}.com:hover path,.com.on path{opacity:.84;stroke:var(--ink);stroke-width:1.5}
+.lead-l{stroke:#64748B;stroke-dasharray:2 2.5;stroke-width:.7}
+.territory-legend{display:flex;flex-wrap:wrap;gap:8px 16px;padding:0 18px 14px;color:var(--soft);font-size:.69rem}
+.territory-legend span{display:inline-flex;align-items:center;gap:6px}
+.territory-legend i{width:8px;height:8px;border-radius:2px}
+#tip{min-height:128px;padding:15px 18px;border-top:1px solid var(--line);background:#F8FAFC;color:var(--muted);font-size:.78rem;line-height:1.6}
+#tip b{color:var(--ink)}
+#tip small{display:block;margin-top:8px;color:var(--soft);font-size:.68rem}
+.inspection-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.inspection-heading span,.inspection-meta span{color:var(--soft);font:500 .63rem var(--mono);letter-spacing:.04em}
+.inspection-heading strong{color:var(--ink);font-size:.9rem}
+.inspection-meta{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.inspection-meta strong{color:var(--blue);font-size:.78rem}
+.inspection-tariff{font-family:var(--mono);font-size:.7rem;line-height:1.65}
+.sem{display:inline-flex;align-items:center;gap:7px;margin:7px 0 2px;font-size:.75rem;font-weight:600}.sem i{width:9px;height:9px;border-radius:50%}
+.mode-switch{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;background:#E2E8F0;border:1px solid #CBD5E1;border-radius:7px}
+.modebtn{border:0;border-radius:4px;background:transparent;padding:9px 13px;color:var(--muted);font:600 .8rem var(--sans);cursor:pointer}
+.modebtn.on{background:var(--ink);color:#fff}
+.section-intro{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:30px}
+.section-intro .lead{max-width:500px;font-size:.94rem}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.solution-card{min-height:270px;padding:24px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.solution-index{display:block;margin-bottom:32px;color:var(--blue);font:600 .78rem var(--mono)}
+.solution-card h3{margin-bottom:12px;font-size:1.15rem;letter-spacing:-.025em}
+.solution-card p,.solution-card li{color:var(--muted);font-size:.88rem;line-height:1.65}
+.solution-card ul{margin:13px 0 0;padding-left:17px}
+.solution-card li+li{margin-top:5px}
+.solution-card .scope{display:block;margin-top:18px;padding-top:12px;border-top:1px solid var(--line);color:var(--blue);font:500 .67rem var(--mono);letter-spacing:.04em}
+.founder-strip{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;margin-top:26px;padding:24px 0;border-top:1px solid #CBD5E1;border-bottom:1px solid #CBD5E1}
+.founder-label{color:var(--blue);font:600 .68rem var(--mono);letter-spacing:.06em}
+.founder-strip h3{margin-top:8px;font-size:1.18rem}
+.founder-strip p{color:var(--muted);font-size:.88rem}
+.disciplines{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.disciplines span{padding:6px 9px;border:1px solid var(--line);border-radius:5px;color:var(--ink);font-size:.72rem;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:36px;align-items:start}
+.sim-intro{position:sticky;top:104px}
+.sim-intro h2{margin-top:10px}
+.sim-intro .mode-switch{margin-top:20px}
+.sim-intro .lead{margin:16px 0 18px}
+.panel{padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.panel svg{display:block;width:100%;height:auto}
+.sim h3{margin-bottom:16px;font-size:1.12rem}
+.sim label{display:flex;justify-content:space-between;gap:12px;margin:14px 0 6px;color:var(--muted);font-size:.78rem;font-weight:500}
+.sim label b{color:var(--ink);font:500 .74rem var(--mono)}
 .sim input[type=range]{width:100%;accent-color:var(--green)}
-.sim input[type=number]{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:1rem var(--bf)}
-.result{margin-top:18px;background:linear-gradient(135deg,var(--steel),var(--steel-d));color:#fff;border-radius:14px;padding:18px}
-.result b{display:block;font:800 2rem var(--hf);color:#9be6ac}
-.note{font-size:.76rem;color:var(--muted);margin-top:10px}
-/* ===== 8. Tabla de tarifas ===== */
-.tw{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:14px}
-table{width:100%;border-collapse:collapse;min-width:620px;background:var(--card);font-size:.92rem}
-th{background:var(--steel);color:#fff;text-align:left;padding:13px 16px;font-weight:600}
-td{padding:13px 16px;border-top:1px solid var(--line)}
-.tag{background:rgba(104,180,120,.18);color:var(--green-d);padding:3px 10px;border-radius:99px;font-weight:600;font-size:.78rem}
-/* ===== 9. Proceso y contacto ===== */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px;counter-reset:s}
-.step{position:relative;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:14px}
-.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#0d2a16;font:700 1rem var(--hf);margin-bottom:12px}
-.step h3{font-size:1.02rem;margin-bottom:6px}.step p{font-size:.9rem;color:var(--muted)}
-.contact{background:linear-gradient(135deg,var(--steel-d),var(--steel));color:#fff}
-.contact h2,.contact .lead{color:#fff}.contact .lead{opacity:.85}
-.form{display:grid;gap:12px}
-.form input,.form select,.form textarea{width:100%;padding:13px;border-radius:10px;border:0;font:1rem var(--bf);background:#fff;color:#1e2a38}
-footer{padding:30px 0;font-size:.85rem;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
-/* ===== 9b. Modos, semáforo, boleta, transparencia, informe ===== */
+.sim input[type=number],.sim input[type=text],.sim select{width:100%;min-height:42px;padding:9px 11px;border:1px solid #CBD5E1;border-radius:5px;background:#fff;color:var(--ink);font:500 .82rem var(--mono)}
+.sim select{font-family:var(--sans)}.sim #tf{font-family:var(--mono)}
+.sim input:focus,.sim select:focus,.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid #93C5FD;outline-offset:1px}
+.result{margin-top:20px;padding:16px;border:1px solid #A7F3D0;border-left:3px solid var(--green);border-radius:6px;background:#ECFDF5;color:var(--muted);font-size:.78rem}
+.result b{display:block;margin-top:5px;color:var(--green);font-size:1.75rem;font-weight:600;line-height:1.35}
+.btn-w{width:100%;margin-top:12px;background:var(--ink);color:#fff}
+.btn-w:hover{background:var(--blue)}
+.note{margin-top:12px;color:var(--soft);font-size:.72rem}
+.tw{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:8px;background:#fff}
+table{width:100%;min-width:650px;border-collapse:collapse;font-size:.82rem}
+th{padding:12px 14px;background:#F1F5F9;color:var(--ink);text-align:left;font-size:.7rem;font-weight:600}
+td{padding:13px 14px;border-top:1px solid var(--line);color:var(--muted)}
+td:nth-child(3){color:var(--ink);font-size:.75rem;white-space:nowrap}
+.tag{display:inline-block;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--blue);font:500 .65rem var(--mono)}
+.bres{margin-top:14px;padding:14px;border:1px solid #A7F3D0;border-left:3px solid var(--green);border-radius:6px;background:#ECFDF5;color:var(--ink);font-size:.83rem}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.step{padding:18px;background:var(--paper);border:1px solid var(--line);border-radius:7px}
+.step::before{display:block;margin-bottom:24px;counter-increment:s;content:"0" counter(s);color:var(--blue);font:600 .75rem var(--mono)}
+.steps{counter-reset:s}
+.step h3{margin-bottom:7px;font-size:.95rem}
+.step p,.src div{color:var(--muted);font-size:.8rem}
+.src{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}
+.src div{padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.src b{display:block;margin-bottom:5px;color:var(--ink);font-family:var(--display);font-size:.8rem}
+.contact{background:var(--ink);color:#fff}
+.contact h2,.contact .lead{color:#fff}.contact .lead{opacity:.78}
+.contact .eyebrow{color:#6EE7B7}
+.form{display:grid;gap:10px}
+.form input,.form select,.form textarea{width:100%;min-height:44px;padding:11px 12px;border:1px solid #334155;border-radius:5px;background:#1E293B;color:#fff;font:500 .82rem var(--sans)}
+.form textarea{resize:vertical}
+.form ::placeholder{color:#94A3B8}
+.form .err{color:#FCA5A5;font-size:.82rem}
+.form #ok{color:#6EE7B7;font-size:.84rem}
+.btn-wa{border-color:#475569;color:#fff}
+footer{padding:28px 0;border-top:1px solid var(--line);background:var(--paper);color:var(--soft);font-size:.75rem}
+footer .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
 body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{display:none!important}
-.seg{display:inline-flex;background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:4px;margin:22px 0 0}
-.modebtn{border:0;background:none;padding:9px 16px;border-radius:9px;font:600 .88rem var(--bf);color:var(--muted);cursor:pointer;transition:all .2s}
-.modebtn.on{background:var(--steel);color:#fff;box-shadow:0 6px 14px -8px var(--steel)}
-.sim select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:1rem var(--bf)}
-.sim input[type=text]{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:1rem var(--bf)}
-.btn-w{background:#fff;color:var(--steel);margin-top:14px;width:100%;text-align:center}
-.btn-wa{background:#25D366;color:#073b1b}
-#tip{min-height:150px;line-height:1.5}#tip small{display:block;color:var(--muted);margin-top:6px;font-size:.74rem}
-.sem{display:inline-flex;align-items:center;gap:8px;font-weight:700;margin:6px 0 2px}.sem i{width:13px;height:13px;border-radius:50%}
-.bres{margin-top:16px;padding:16px;border-radius:12px;background:var(--bg-alt);border-left:5px solid var(--green);font-size:.94rem}
-.src{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
-.src div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:.88rem;color:var(--muted)}.src b{display:block;color:var(--steel);font-family:var(--hf);margin-bottom:4px}
-.form .err{color:#ffd1d1;font-size:.85rem}
-#report{display:none}
-@media (max-width:900px){.src{grid-template-columns:1fr 1fr}}
-@media print{body>*:not(#report){display:none!important}body::before{display:none}
- #report{display:block;font:12pt/1.5 Inter,Arial,sans-serif;color:#1e2a38;padding:0}#report img{height:60px}
- #report h1{font:700 20pt Poppins,Arial;color:#2D557A;border-bottom:3px solid #68B478;padding-bottom:8px;margin:16px 0}
- #report table{width:100%;border-collapse:collapse;margin:14px 0}#report td{border-bottom:1px solid #d9e2ec;padding:8px 6px}#report td:first-child{color:#5b6b7c;width:42%}
- #report .big{font:800 26pt Poppins,Arial;color:#2D557A}#report small{color:#5b6b7c;font-size:9pt;display:block;margin-top:14px}@page{margin:16mm}}
-/* ===== 10. Animaciones de scroll ===== */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
 .reveal.in{opacity:1;transform:none}
+#report{display:none}
+@media (max-width:1000px){nav{gap:14px}nav ul{gap:12px}nav a{font-size:.76rem}.hero-grid{grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);gap:30px}.steps,.src{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.wrap{padding:0 20px}section{padding:68px 0}nav{height:68px;display:flex;justify-content:space-between}.menu{display:block}nav ul{display:none;position:absolute;top:68px;left:0;right:0;align-items:stretch;flex-direction:column;gap:0;padding:8px 20px 16px;background:var(--bg);border-bottom:1px solid var(--line)}nav ul.open{display:flex}nav li a{display:block;padding:11px 2px;font-size:.88rem}nav li:last-child{padding-top:8px}nav li:last-child .btn{display:flex}.hero-grid,.two{grid-template-columns:1fr}.hero-grid{gap:34px}.mapcard{max-width:640px;width:100%;margin:auto}.sim-intro{position:static}.section-intro{display:block}.section-intro .lead{margin-top:12px}.founder-strip{grid-template-columns:1fr;gap:12px}}
+@media (max-width:560px){.wrap{padding:0 16px}.hero{padding:44px 0 54px}.hero h1{font-size:clamp(2rem,10vw,2.8rem)}.hero-copy{font-size:.94rem}.metrics{grid-template-columns:1fr;margin-top:30px}.metric{padding:12px 0}.metric+.metric{padding:12px 0;border-left:0;border-top:1px solid var(--line)}.metric-value{font-size:.91rem}.grid3{grid-template-columns:1fr}.solution-card{min-height:0}.solution-index{margin-bottom:18px}.panel{padding:16px}.map-heading{padding:12px}.map-stage{padding:10px 8px 0}.territory-legend{padding:0 12px 12px;gap:8px}.territory-legend span{font-size:.62rem}#tip{padding:12px;min-height:130px}.steps,.src{grid-template-columns:1fr}.founder-strip{padding:18px 0}.footer-inner{flex-direction:column;text-align:center}footer .brand-logo{height:44px}}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
-/* ===== 11. Responsive ===== */
-@media (max-width:900px){
-  .hero-grid,.two{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}
-  .stats,.steps{grid-template-columns:repeat(2,1fr)}
-  .menu{display:block}nav img{height:40px}
-  nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg);padding:16px 20px;border-bottom:1px solid var(--line)}
-  nav ul.open{display:flex}section{padding:60px 0}}
+@media print{body>*:not(#report){display:none!important}body::before{display:none}#report{display:block;padding:0;color:#0F172A;font:12pt/1.5 Inter,Arial,sans-serif}#report img{height:60px}#report h1{margin:16px 0;padding-bottom:8px;border-bottom:3px solid #059669;color:#0F172A;font:700 20pt 'Plus Jakarta Sans',Arial}#report table{width:100%;margin:14px 0;border-collapse:collapse}#report td{padding:8px 6px;border-bottom:1px solid #E2E8F0}#report td:first-child{width:42%;color:#475569}#report .big{color:#059669;font:600 26pt 'JetBrains Mono',monospace}#report small{display:block;margin-top:14px;color:#475569;font-size:9pt}@page{margin:16mm}}
 </style>
 </head>
-<body>
+<body data-mode="emp">
 
-<!-- ===== Encabezado y navegación ===== -->
+<!-- Navegación principal -->
 <header><div class="wrap"><nav>
-  <a href="#inicio"><img src="geogridlogo.png" alt="GeoGrid, tu energía al costo justo de tu zona"></a>
-  <button class="menu" aria-label="Abrir menú" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
-  <ul id="links">
-    <li><a href="#servicios">Servicios</a></li><li><a href="#peak">Peak Shaving</a></li>
-    <li><a href="#tarifas">Tarifas</a></li><li><a href="#boleta">Mi boleta</a></li><li><a href="#metodo">Método</a></li>
-    <li><a href="#contacto" class="btn btn-p" style="padding:9px 18px">Diagnóstico</a></li>
+  <a href="#inicio" aria-label="GeoGrid, inicio"><img class="brand-logo" src="geogridlogo.png" alt="GeoGrid"></a>
+  <button class="menu" aria-label="Abrir menú" aria-expanded="false" onclick="const open=document.getElementById('links').classList.toggle('open');this.setAttribute('aria-expanded',open)">☰</button>
+  <ul id="links" class="nav-links">
+    <li><a href="#inicio">Quiénes somos</a></li><li><a href="#servicios">Qué hacemos</a></li>
+    <li><a href="#mp">Mapa Biobío</a></li><li><a href="#peak">Simulador Tarifario</a></li><li><a href="#metodo">Metodología</a></li>
   </ul>
+  <a href="#contacto" class="btn btn-dark">Solicitar Diagnóstico</a>
 </nav></div></header>
 
-<!-- ===== Hero con mapa territorial ===== -->
+<!-- Quiénes somos y visor territorial -->
 <section class="hero" id="inicio"><div class="wrap hero-grid">
   <div class="reveal">
-    <span class="eyebrow">Inteligencia tarifaria · Biobío, Chile</span>
-    <h1>Tu energía, al <span>costo justo</span> de tu zona</h1>
-    <p data-for="emp">Convertimos datos reales de la red eléctrica en decisiones financieras: reduce cargos por demanda en hora punta (18:00–22:00 hrs) y elige bien tu tarifa BT3, BT4.3 o AT4.3 en el Biobío.</p><p data-for="hog">Cuida tu boleta de BT1, evita el sobreconsumo de invierno y asegura respaldo energético ante cortes en tu zona del Biobío, con ahorro medido en pesos chilenos.</p>
-    <div class="cta"><a class="btn btn-p" href="#contacto">Solicitar diagnóstico</a><a class="btn btn-o" href="#peak">Simular ahorro</a></div>
-    <div class="seg" role="group" aria-label="Perfil"><button class="modebtn on" data-m="emp">Modo Empresa / Pyme</button><button class="modebtn" data-m="hog">Modo Hogar</button></div>
+    <span class="eyebrow">AUTOMATIZACIÓN · CONFIABILIDAD ENERGÉTICA · ANÁLISIS FINANCIERO · BIOBÍO</span>
+    <h1>Quiénes somos: Ingeniería técnica y evaluación financiera aplicada al costo eléctrico real.</h1>
+    <p class="hero-copy">En GeoGrid integramos automatización y control industrial, ingeniería en mantenimiento y evaluación comercial-financiera desde la Región del Biobío. Auditamos perfiles de carga, optimizamos contratos eléctricos (<span class="mono">BT1, BT3, BT4.3 y AT4.3</span>) y diseñamos estrategias de recorte en hora punta (<span class="mono">18:00–22:00 hrs</span>) y respaldo energético con retorno medido en pesos chilenos.</p>
+    <div class="cta"><a class="btn btn-dark" href="#contacto">Solicitar diagnóstico</a><a class="btn btn-o" href="#peak">Abrir simulador tarifario</a></div>
+    <div class="metrics" aria-label="Indicadores de operación">
+      <div class="metric"><span class="metric-value">18:00 – 22:00 hrs</span><span class="metric-label">Control de Demanda en Hora Punta</span></div>
+      <div class="metric"><span class="metric-value">33 Comunas</span><span class="metric-label">Cobertura CGE y Frontel en Biobío</span></div>
+      <div class="metric"><span class="metric-value">Técnico + Financiero</span><span class="metric-label">Viabilidad operacional y Payback real</span></div>
+    </div>
   </div>
-  <div class="mapcard reveal">
-    <!-- Mapa comunal del Biobío: se dibuja desde el arreglo COMUNAS (ver script B) -->
-    <svg id="mp" viewBox="100 95 440 420" role="img" aria-label="Mapa de la Región del Biobío por comunas"></svg>
-    <div class="legend"><span><i style="background:#2D557A"></i>CGE · Gran Concepción</span><span><i style="background:#4A7BA6"></i>CGE · Los Ángeles</span><span><i style="background:#68B478"></i>Frontel · Arauco</span><span><i style="background:#9AD1A6"></i>Frontel · interior</span></div>
-    <div id="tip">Pasa el cursor o toca una comuna para ver su distribuidora y tarifa referencial.</div>
+  <div class="mapcard reveal" id="visor">
+    <div class="map-heading"><span class="eyebrow">VISOR TERRITORIAL DE DISTRIBUCIÓN · BIOBÍO</span><span class="map-count">33 COMUNAS</span></div>
+    <div class="map-stage"><svg id="mp" viewBox="100 85 440 430" role="img" aria-label="Mapa interactivo de las comunas de la Región del Biobío"></svg></div>
+    <div class="territory-legend"><span><i style="background:#1E3A8A"></i>CGE · Gran Concepción</span><span><i style="background:#5573B5"></i>CGE · Los Ángeles</span><span><i style="background:#334155"></i>Frontel · Arauco</span><span><i style="background:#CBD5E1"></i>Frontel · interior</span></div>
+    <div id="tip" aria-live="polite">Selecciona una comuna para consultar distribuidora, continuidad referencial y tarifas vigentes.</div>
   </div>
 </div></section>
 
-<!-- ===== Métricas ===== -->
-<div class="wrap"><div class="stats reveal">
-  <div class="stat"><b>6</b><span>comunas del Biobío en foco</span></div>
-  <div class="stat"><b>CLP</b><span>ahorro medido en pesos chilenos</span></div>
-  <div class="stat"><b>3</b><span>líneas de servicio integradas</span></div>
-  <div class="stat"><b>100%</b><span>decisiones basadas en datos de red</span></div>
-</div></div>
-
-<!-- ===== Servicios ===== -->
+<!-- Arquitectura de soluciones -->
 <section id="servicios"><div class="wrap">
-  <span class="eyebrow">Servicios</span><h2>Tres frentes para pagar solo lo justo</h2>
-  <p class="lead">Combinamos datos territoriales con análisis financiero para que cada decisión energética tenga un retorno claro.</p>
-  <div class="seg" role="group" aria-label="Perfil"><button class="modebtn on" data-m="emp">Modo Empresa / Pyme</button><button class="modebtn" data-m="hog">Modo Hogar</button></div>
-  <div class="grid3" data-for="emp"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16V9m6 7V4m6 12v-5"/></svg></div><h3>Tarifas BT3, BT4.3 y AT4.3</h3><p>Comparamos opciones contractuales por comuna y distribuidora (CGE o Frontel) y detectamos potencia mal dimensionada.</p><ul><li>Cargo de demanda leída en punta 18:00–22:00</li><li>Potencia contratada vs. suministrada</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 14l5-6 4 4 5-8 6 10M2 20h20"/></svg></div><h3>Desplazamiento de turnos y maquinaria</h3><p>Simulamos mover cargas intensivas fuera de la ventana punta sin afectar la producción.</p><ul><li>Escenarios de turnos y arranques</li><li>Gestión de cargas y baterías</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></div><h3>Peak Shaving con respaldo</h3><p>Recortamos el máximo facturable y, donde la red es más frágil, sumamos respaldo y generación.</p><ul><li>Dimensionamiento de baterías</li><li>Retorno de inversión en CLP</li></ul></article></div><div class="grid3" data-for="hog"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16V9m6 7V4m6 12v-5"/></svg></div><h3>Tarifa BT1 bien aplicada</h3><p>Revisamos cargo fijo y energía base de tu boleta según tu comuna y distribuidora.</p><ul><li>Detección de cobros inusuales</li><li>Comparación con rangos referenciales</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 14l5-6 4 4 5-8 6 10M2 20h20"/></svg></div><h3>Prevención de sobreconsumo de invierno</h3><p>Identificamos los equipos que te llevan al tramo de energía adicional entre mayo y septiembre.</p><ul><li>Calefacción y hábitos de consumo</li><li>Metas mensuales de kWh</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></div><h3>Respaldo ante cortes</h3><p>Evaluamos baterías y generación solar según la continuidad de suministro de tu comuna.</p><ul><li>Dimensionamiento de respaldo</li><li>Payback estimado en pesos</li></ul></article></div>
+  <div class="section-intro"><div><span class="eyebrow">CAPACIDADES OPERACIONALES</span><h2>Qué hacemos en GeoGrid</h2></div><p class="lead">Auditoría, control de demanda y respaldo energético, conectados con la viabilidad financiera de cada decisión.</p></div>
+  <div class="grid3" data-for="emp">
+    <article class="solution-card reveal"><span class="solution-index">01 / TARIFAS</span><h3>Auditoría y Optimización Tarifaria</h3><p>Análisis de boletas, factor de potencia y potencia contratada para determinar oportunidades de corrección y migración tarifaria.</p><ul><li>Evaluación de <span class="mono">BT1, BT3, BT4.3 y AT4.3</span></li><li>Contraste por comuna y distribuidora</li></ul><span class="scope">EMPRESAS / PYMES</span></article>
+    <article class="solution-card reveal"><span class="solution-index">02 / DEMANDA</span><h3>Gestión de Demanda Punta</h3><p>Desplazamiento de carga y automatización de procesos críticos durante el bloque de punta para reducir cargos por demanda máxima.</p><ul><li>Control de <span class="mono">18:00–22:00 hrs</span></li><li>Escenarios de recorte y operación</li></ul><span class="scope">PEAK SHAVING · CONTROL</span></article>
+    <article class="solution-card reveal"><span class="solution-index">03 / CONTINUIDAD</span><h3>Respaldo Energético</h3><p>Dimensionamiento de baterías y generación distribuida según criticidad de equipos y continuidad de suministro por comuna.</p><ul><li>Evaluación de <span class="mono">VAN</span>, Payback y flujo de caja</li><li>Respaldo para cargas críticas</li></ul><span class="scope">INGENIERÍA + EVALUACIÓN ECONÓMICA</span></article>
+  </div>
+  <div class="grid3" data-for="hog">
+    <article class="solution-card reveal"><span class="solution-index">01 / TARIFAS</span><h3>Revisión de la cuenta eléctrica</h3><p>Revisamos cargos fijos y energía base de la boleta según tarifa, consumo y distribuidora de la comuna.</p><ul><li>Validación referencial de tarifa <span class="mono">BT1</span></li><li>Detección de variaciones inusuales</li></ul><span class="scope">HOGARES</span></article>
+    <article class="solution-card reveal"><span class="solution-index">02 / CONSUMO</span><h3>Control del consumo estacional</h3><p>Identificamos consumos que inciden en el tramo adicional de invierno y comparamos medidas posibles de reducción.</p><ul><li>Seguimiento de energía mensual</li><li>Recomendaciones según perfil de uso</li></ul><span class="scope">ANÁLISIS DE BOLETA</span></article>
+    <article class="solution-card reveal"><span class="solution-index">03 / RESPALDO</span><h3>Continuidad para el hogar</h3><p>Evaluamos alternativas de respaldo de acuerdo con las necesidades del hogar y las condiciones de suministro de su comuna.</p><ul><li>Dimensionamiento preliminar</li><li>Estimación económica en pesos</li></ul><span class="scope">RESPALDO ENERGÉTICO</span></article>
+  </div>
+  <aside class="founder-strip">
+    <div><span class="founder-label">EQUIPO FUNDADOR / ENFOQUE MULTIDISCIPLINARIO</span><h3>Operación industrial y finanzas en una misma evaluación.</h3></div>
+    <div><div class="disciplines"><span>Automatización y Control Industrial · UTFSM</span><span>Ingeniería en Mantenimiento Industrial · UTFSM</span><span>Ingeniería Comercial y Evaluación Financiera · UNAB</span></div><p>Cruzar la realidad de planta con la evaluación financiera ayuda a dimensionar inversiones desde la operación, evitar sobrecostos y priorizar proyectos con retorno verificable.</p></div>
+  </aside>
 </div></section>
 
 <!-- ===== Peak Shaving ===== -->
 <section class="alt" id="peak"><div class="wrap two">
-  <div class="reveal">
-    <span class="eyebrow">Simulador</span>
-    <h2 data-for="emp">Aplana la punta, reduce la cuenta</h2><h2 data-for="hog">Evita el sobreconsumo de invierno</h2>
-    <div class="seg" role="group" aria-label="Perfil"><button class="modebtn on" data-m="emp">Modo Empresa / Pyme</button><button class="modebtn" data-m="hog">Modo Hogar</button></div>
-    <p class="lead" style="margin:16px 0 18px"><span data-for="emp">La curva verde muestra cómo desplazar o cubrir la demanda de 18:00 a 22:00 baja el máximo facturable.</span><span data-for="hog">Reducir kWh en el tramo adicional (≈$225–$260/kWh) pesa más que ahorrar en la energía base.</span></p>
+  <div class="reveal sim-intro">
+    <span class="eyebrow">SIMULADOR FINANCIERO · ESCENARIOS REFERENCIALES</span>
+    <h2 data-for="emp">Modela el impacto de la demanda punta.</h2><h2 data-for="hog">Estima el efecto del consumo de invierno.</h2>
+    <div class="mode-switch" role="group" aria-label="Perfil de consumo"><button class="modebtn on" data-m="emp">Modo Empresa / Pyme</button><button class="modebtn" data-m="hog">Modo Hogar</button></div>
+    <p class="lead"><span data-for="emp">Evalúa el efecto de reducir demanda máxima facturable dentro del bloque de punta <span class="mono">18:00–22:00 hrs</span>.</span><span data-for="hog">Compara el consumo en tramo adicional de invierno con cargos referenciales de <span class="mono">$225–$260 CLP/kWh</span>.</span></p>
     <div data-for="emp"><div class="panel">
       <!-- Gráfico ilustrativo de curva de carga -->
       <svg viewBox="0 0 420 220" role="img" aria-label="Curva de carga diaria antes y después de Peak Shaving">
-        <rect x="270" y="14" width="96" height="170" fill="rgba(45,85,122,.1)"/><text x="276" y="30" style="font:600 10px Inter;fill:#2D557A">HORARIO PUNTA</text>
+        <rect x="270" y="14" width="96" height="170" fill="#EFF6FF"/><text x="276" y="30" style="font:600 10px 'JetBrains Mono';fill:#1E3A8A">HORARIO PUNTA</text>
         <line x1="30" y1="184" x2="400" y2="184" stroke="#cbd5e1"/>
-        <path d="M30 150 C80 145 110 120 150 110 S220 100 260 70 S330 30 366 55 S392 120 400 140" fill="none" stroke="#2D557A" stroke-width="3"/>
-        <path d="M30 150 C80 145 110 120 150 110 S220 100 260 90 S330 82 366 90 S392 124 400 140" fill="none" stroke="#68B478" stroke-width="3" stroke-dasharray="7 5"/>
-        <line x1="270" y1="42" x2="366" y2="42" stroke="#2D557A" stroke-dasharray="2 3"/><line x1="270" y1="84" x2="366" y2="84" stroke="#68B478" stroke-dasharray="2 3"/>
-        <text x="30" y="204" style="font:11px Inter;fill:#64748b">00h</text><text x="200" y="204" style="font:11px Inter;fill:#64748b">12h</text><text x="378" y="204" style="font:11px Inter;fill:#64748b">24h</text>
-        <text x="40" y="24" style="font:600 11px Inter;fill:#2D557A">— Sin gestión</text><text x="40" y="40" style="font:600 11px Inter;fill:#4f9a60">- - Con Peak Shaving</text>
+        <path d="M30 150 C80 145 110 120 150 110 S220 100 260 70 S330 30 366 55 S392 120 400 140" fill="none" stroke="#1E3A8A" stroke-width="2.5"/>
+        <path d="M30 150 C80 145 110 120 150 110 S220 100 260 90 S330 82 366 90 S392 124 400 140" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="7 5"/>
+        <line x1="270" y1="42" x2="366" y2="42" stroke="#1E3A8A" stroke-dasharray="2 3"/><line x1="270" y1="84" x2="366" y2="84" stroke="#059669" stroke-dasharray="2 3"/>
+        <text x="30" y="204" style="font:11px 'JetBrains Mono';fill:#64748b">00h</text><text x="200" y="204" style="font:11px 'JetBrains Mono';fill:#64748b">12h</text><text x="378" y="204" style="font:11px 'JetBrains Mono';fill:#64748b">24h</text>
+        <text x="40" y="24" style="font:600 11px Inter;fill:#1E3A8A">— Sin gestión</text><text x="40" y="40" style="font:600 11px Inter;fill:#059669">- - Con Peak Shaving</text>
       </svg>
     </div></div>
   </div>
   <div class="panel sim reveal">
-    <h3 data-for="emp">Simula tu Peak Shaving</h3><h3 data-for="hog">Simula tu ahorro de invierno</h3>
+    <h3 data-for="emp">Escenario de demanda · Empresa/Pyme</h3><h3 data-for="hog">Escenario de consumo · Hogar</h3>
     <label>Nombre o empresa (opcional)</label><input id="nm" type="text" placeholder="Ej.: Planta Talcahuano">
     <label>Comuna</label><select id="cm" class="csel"></select>
     <div data-for="emp">
@@ -212,7 +229,7 @@ body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{di
       <label>kWh/mes en tramo adicional de invierno <b id="vx">120 kWh</b></label><input id="ex" type="range" min="0" max="400" step="10" value="120">
       <label>Reducción lograda <b id="vh">30 %</b></label><input id="ph" type="range" min="10" max="80" value="30">
     </div>
-    <div class="result">Ahorro anual estimado<b id="out">$0</b>
+    <div class="result">Ahorro anual estimado · CLP<b id="out">$0</b>
       <button class="btn btn-w" id="pdf" type="button">Descargar Informe Ejecutivo (PDF)</button></div>
     <p class="note">Estimación referencial con los rangos de la tabla de tarifas. El diagnóstico GeoGrid usa tus boletas reales.</p>
   </div>
@@ -220,24 +237,24 @@ body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{di
 
 <!-- ===== Tarifas por comuna ===== -->
 <section id="tarifas"><div class="wrap">
-  <span class="eyebrow">Tarifas de referencia · CGE y Frontel</span><h2>Lo que pagas hoy en el Biobío</h2>
-  <p class="lead">CGE atiende el Gran Concepción y Los Ángeles; Frontel, la provincia de Arauco y comunas interiores. Estos son los rangos que usamos como punto de partida del diagnóstico.</p>
+  <span class="eyebrow">ESTRUCTURA DE COSTOS · CGE Y FRONTEL</span><h2>Tarifas de referencia para modelar escenarios.</h2>
+  <p class="lead">Rangos referenciales para contrastar consumos y cargos de distribución. La tarifa y el pliego aplicable dependen de la comuna y del suministro contratado.</p>
   <div class="tw reveal"><table>
     <thead><tr><th>Segmento y tarifa</th><th>Concepto</th><th>Valor referencial</th><th>Distribuidoras</th></tr></thead>
     <tbody>
-      <tr><td rowspan="3"><b>Hogar / Comercio</b><br>Tarifa BT1</td><td>Cargo fijo mensual</td><td>$1.450 – $1.650 CLP/mes</td><td rowspan="3"><span class="tag">CGE</span> <span class="tag">Frontel</span></td></tr>
+      <tr><td rowspan="3"><b>Hogar / Comercio</b><br>Tarifa <span class="mono">BT1</span></td><td>Cargo fijo mensual</td><td>$1.450 – $1.650 CLP/mes</td><td rowspan="3"><span class="tag">CGE</span> <span class="tag">Frontel</span></td></tr>
       <tr><td>Cargo por energía base</td><td>$165 – $195 CLP/kWh</td></tr>
       <tr><td>Energía adicional de invierno / sobreconsumo</td><td>$225 – $260 CLP/kWh</td></tr>
-      <tr><td rowspan="3"><b>Pyme / Industria</b><br>Tarifa BT4.3 · Horario Punta</td><td>Cargo por energía</td><td>$115 – $135 CLP/kWh</td><td rowspan="3"><span class="tag">CGE</span> <span class="tag">Frontel</span></td></tr>
-      <tr><td>Demanda máxima leída en hora punta (18:00 a 22:00 hrs)</td><td>$14.800 – $17.500 CLP/kW-mes</td></tr>
+      <tr><td rowspan="3"><b>Pyme / Industria</b><br>Tarifa <span class="mono">BT4.3</span> · Hora Punta</td><td>Cargo por energía</td><td>$115 – $135 CLP/kWh</td><td rowspan="3"><span class="tag">CGE</span> <span class="tag">Frontel</span></td></tr>
+      <tr><td>Demanda máxima leída en hora punta (<span class="mono">18:00–22:00 hrs</span>)</td><td>$14.800 – $17.500 CLP/kW-mes</td></tr>
       <tr><td>Demanda máxima de potencia suministrada</td><td>$4.200 – $5.100 CLP/kW-mes</td></tr>
     </tbody></table></div>
   <p class="note">Valores referenciales de pliegos tarifarios vigentes en la Región del Biobío (sujetos a actualización mensual por decreto tarifario CNE/SEC).</p>
 </div></section>
 
 <section id="boleta"><div class="wrap two">
-  <div class="reveal"><span class="eyebrow">Calculadora rápida</span><h2>Ingresa tu boleta y detecta sobreprecios</h2>
-    <p class="lead">Con tres datos de tu última boleta comparamos lo que pagaste con los rangos referenciales de tu perfil (<span data-for="emp">BT4.3: energía y potencia en punta</span><span data-for="hog">BT1: cargo fijo y energía</span>).</p></div>
+  <div class="reveal"><span class="eyebrow">ANÁLISIS DE CUENTA · ESTIMACIÓN INICIAL</span><h2>Contrasta tu boleta con los rangos del perfil.</h2>
+    <p class="lead">Ingresa monto y consumo para comparar cargos referenciales (<span data-for="emp"><span class="mono">BT4.3</span>: energía y potencia en punta</span><span data-for="hog"><span class="mono">BT1</span>: cargo fijo y energía</span>). El resultado es una señal preliminar, no una liquidación oficial.</p></div>
   <div class="panel sim reveal"><label>Comuna</label><select id="bc" class="csel"></select>
     <label>Monto total pagado (CLP)</label><input id="bm" type="number" min="0" placeholder="Ej.: 48500">
     <label>Consumo (kWh)</label><input id="bk" type="number" min="1" placeholder="Ej.: 260">
@@ -246,7 +263,7 @@ body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{di
 </div></section>
 <!-- ===== Método ===== -->
 <section class="alt" id="metodo"><div class="wrap">
-  <span class="eyebrow">Cómo trabajamos</span><h2>De la boleta a un ahorro comprobable</h2>
+  <span class="eyebrow">METODOLOGÍA DE ANÁLISIS</span><h2>De los datos de suministro a una decisión evaluada.</h2>
   <div class="steps">
     <div class="step reveal"><h3>Levantamiento</h3><p>Boletas, perfil de carga y datos de tu zona y distribuidora.</p></div>
     <div class="step reveal"><h3>Diagnóstico</h3><p>Detectamos sobrecostos y comparamos alternativas tarifarias.</p></div>
@@ -256,14 +273,14 @@ body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{di
 </div></section>
 
 <section class="alt" id="transparencia"><div class="wrap">
-  <span class="eyebrow">Metodología y transparencia técnica</span><h2>Cálculos con respaldo regulatorio chileno</h2>
-  <p class="lead">Nuestro motor trabaja con normativa pública y las estructuras tarifarias de las distribuidoras. Todo resultado es referencial hasta validarlo con tus boletas y mediciones.</p>
+  <span class="eyebrow">FUENTES Y CRITERIOS</span><h2>Modelamiento basado en información tarifaria pública.</h2>
+  <p class="lead">Los escenarios usan referencias de pliegos y normativa disponibles. Cada resultado requiere validación con los antecedentes de consumo y el contrato específico del cliente.</p>
   <div class="src reveal"><div><b>Decretos Tarifarios CNE</b>Fijación de tarifas de distribución y actualización periódica.</div><div><b>Normativa técnica SEC</b>Calidad de servicio e indicadores de continuidad (SAIDI/SAIFI).</div><div><b>Pliegos tarifarios CGE</b>Gran Concepción y Los Ángeles.</div><div><b>Pliegos tarifarios Frontel</b>Provincia de Arauco y comunas interiores.</div></div>
 </div></section>
 <!-- ===== Contacto ===== -->
 <section class="contact" id="contacto"><div class="wrap two">
-  <div class="reveal"><span class="eyebrow" style="color:#9be6ac">Contacto</span><h2>Pide tu diagnóstico inicial</h2>
-    <p class="lead">Cuéntanos tu comuna y tipo de cliente. Te responderemos desde Talcahuano y Concepción.</p></div>
+  <div class="reveal"><span class="eyebrow">CONTACTO TÉCNICO</span><h2>Solicita una revisión de tu suministro.</h2>
+    <p class="lead">Indica comuna, perfil y objetivo operacional. Coordinaremos los antecedentes necesarios para una evaluación inicial.</p></div>
   <form class="form reveal" id="f" novalidate>
     <input id="fn" required placeholder="Nombre o empresa" aria-label="Nombre o empresa">
     <input id="fe" required type="email" placeholder="Correo (corporativo para empresas)" aria-label="Correo">
@@ -272,12 +289,12 @@ body[data-mode="emp"] [data-for="hog"],body[data-mode="hog"] [data-for="emp"]{di
     <textarea id="fm" rows="3" placeholder="¿Qué quieres optimizar?" aria-label="Mensaje"></textarea>
     <p class="err" id="er"></p>
     <button class="btn btn-p" type="submit">Solicitar diagnóstico</button>
-    <a class="btn btn-wa" id="wa" target="_blank" rel="noopener">Agendar auditoría en terreno por WhatsApp</a>
+    <a class="btn btn-wa" id="wa" target="_blank" rel="noopener">Coordinar por WhatsApp</a>
     <p id="ok" style="display:none">¡Gracias! Solicitud validada (demo): conecta el envío a tu correo o CRM.</p>
   </form>
 </div></section>
 
-<footer><div class="wrap">© 2026 GeoGrid · Talcahuano y Concepción, Región del Biobío, Chile · Tu energía, al costo justo de tu zona</div></footer>
+<footer><div class="wrap footer-inner"><img class="brand-logo" src="geogridlogo.png" alt="GeoGrid"><p>GeoGrid · Ingeniería energética, automatización y evaluación financiera · Región del Biobío</p></div></footer>
 
 <script>
 /* ===== A. Animación de entrada al hacer scroll ===== */
@@ -319,11 +336,11 @@ const COMUNAS=[
 ['Mulchén','322,352 350,390 405,395 415,440 380,450 330,430 318,385',3],
 ['Quilaco','405,395 420,362 440,420 470,455 440,470 415,440',3],
 ['Alto Biobío','465,228 515,258 500,330 495,430 470,455 440,420 420,362 470,350 480,300 455,262',3]];
-const COL=['#2D557A','#4A7BA6','#68B478','#9AD1A6'],TXT=['#fff','#fff','#12301c','#12301c'];
+const COL=['#1E3A8A','#5573B5','#334155','#CBD5E1'],TXT=['#fff','#fff','#fff','#0F172A'];
 const FRONTEL=['Arauco','Lebu','Curanilahue','Los Álamos','Cañete','Contulmo','Tirúa','Quilleco','Antuco','Tucapel','Santa Bárbara','Mulchén','Quilaco','Alto Biobío'];
 const AL=['Concepción','Talcahuano','Hualpén','San Pedro de la Paz','Chiguayante','Penco','Coronel'],CR=['Tirúa','Contulmo','Alto Biobío','Quilaco','Antuco','Santa Bárbara','Mulchén','Tucapel','Los Álamos'];
-const LV=[['Alta','#4f9a60','Red urbana más mallada, con cortes menos frecuentes: prioriza optimizar tarifa y demanda en punta.'],['Media','#E0A82E','Red mixta urbano‑rural con tramos largos y vegetación: conviene gestión tarifaria más respaldo básico.'],['Crítica','#D64545','Alimentadores largos y expuestos (rural, forestal o cordillera): mayor riesgo de cortes prolongados. Conviene combinar gestión tarifaria con respaldo energético.']];
-const panel=(n,d)=>{const l=LV[AL.includes(n)?0:CR.includes(n)?2:1];return `<b>${n}</b> · Distribuidora: ${d}<br>BT1 ref.: energía base $165–$195/kWh · BT4.3 punta ref.: $14.800–$17.500/kW-mes<br><span class="sem"><i style="background:${l[1]}"></i>Continuidad de suministro: ${l[0]}</span><br>${l[2]}<small>Clasificación referencial de trabajo según tipo de red; no son cifras oficiales SAIDI/SAIFI (consultar estadísticas SEC).</small>`};
+const LV=[['Alta','#1E3A8A','Red urbana más mallada, con cortes menos frecuentes: prioriza optimizar tarifa y demanda en punta.'],['Media','#E0A82E','Red mixta urbano‑rural con tramos largos y vegetación: conviene gestión tarifaria más respaldo básico.'],['Crítica','#D64545','Alimentadores largos y expuestos (rural, forestal o cordillera): mayor riesgo de cortes prolongados. Conviene combinar gestión tarifaria con respaldo energético.']];
+const panel=(n,d)=>{const l=LV[AL.includes(n)?0:CR.includes(n)?2:1];return `<div class="inspection-heading"><span>COMUNA SELECCIONADA</span><strong>${n}</strong></div><div class="inspection-meta"><span>DISTRIBUIDORA</span><strong>${d}</strong></div><div class="inspection-tariff">BT1 · $165–$195 CLP/kWh base<br>BT4.3 · $14.800–$17.500 CLP/kW-mes punta</div><span class="sem"><i style="background:${l[1]}"></i>Continuidad referencial: ${l[0]}</span><small>${l[2]} Clasificación referencial; no corresponde a cifras oficiales SAIDI/SAIFI.</small>`};
 const tip=document.getElementById('tip'),NS='http://www.w3.org/2000/svg';
 const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
 const svg=document.getElementById('mp');
@@ -331,20 +348,21 @@ COMUNAS.forEach(([n,pts,g,lx,ly])=>{
   const P=pts.split(' ').map(s=>s.split(',').map(Number)),cx=P.reduce((s,p)=>s+p[0],0)/P.length,cy=P.reduce((s,p)=>s+p[1],0)/P.length;
   const grp=mk('g',{class:'com'},svg),dist=FRONTEL.includes(n)?'Frontel':'CGE';
   mk('path',{d:'M'+pts.replace(/ /g,'L')+'Z',fill:COL[g]},grp);
-  const info=n+' · Distribuidora: '+dist+' · BT1 ref.: energía $165–$195/kWh (base), fijo ~$1.450–$1.650/mes · BT4.3 punta ref.: $14.800–$17.500/kW-mes';
   if(lx){mk('line',{x1:lx+3,y1:ly-3,x2:cx,y2:cy,class:'lead-l'},grp);
-    const t=mk('text',{x:lx,y:ly,'text-anchor':lx<250?'end':'start','font-size':9,'font-weight':600,fill:'#1e2a38','font-family':'Inter,sans-serif'},grp);t.textContent=n}
+    const t=mk('text',{x:lx,y:ly,'text-anchor':lx<250?'end':'start','font-size':9,'font-weight':600,fill:'#0F172A','font-family':'Inter,sans-serif'},grp);t.textContent=n}
   else{const w=Math.max(...P.map(p=>p[0]))-Math.min(...P.map(p=>p[0]));
     const t=mk('text',{x:cx,y:cy+3,'text-anchor':'middle','font-size':Math.max(6,Math.min(n==='Los Ángeles'?11:9,w/(n.length*.58))),'font-weight':600,fill:TXT[g],'font-family':'Inter,sans-serif','pointer-events':'none'},grp);t.textContent=n}
   const show=()=>{document.querySelectorAll('.com.on').forEach(e=>e.classList.remove('on'));grp.classList.add('on');tip.innerHTML=panel(n,dist)};
   grp.addEventListener('mouseenter',show);grp.addEventListener('click',show);
+  if(n==='Concepción')show();
 });
 /* ===== C. Perfil, simulador, informe PDF, boleta, formulario ===== */
-const $=id=>document.getElementById(id),clp=v=>'$'+Math.round(v).toLocaleString('es-CL');
+const $=id=>document.getElementById(id),clp=v=>'$'+Math.round(v).toLocaleString('es-CL'),mono=v=>`<span class="mono">${v}</span>`;
 let mode='emp',res={};
 const WA='56900000000'; /* ← reemplaza por tu número de WhatsApp Business (código país + número) */
 document.querySelectorAll('.csel').forEach(s=>{s.innerHTML=COMUNAS.map(c=>c[0]).sort((a,b)=>a.localeCompare(b,'es')).map(n=>`<option>${n}</option>`).join('');s.value='Concepción'});
 const distOf=n=>FRONTEL.includes(n)?'Frontel':'CGE';
+document.getElementById('tf').classList.add('mono');
 function setMode(m){mode=m;document.body.dataset.mode=m;document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.m===m));calc()}
 document.querySelectorAll('.modebtn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
 function calc(){
@@ -362,11 +380,11 @@ $('bgo').addEventListener('click',()=>{
   if(!(m>0&&k>0)){o.textContent='Ingresa monto y consumo válidos.';return}
   const ef=m/k,d=distOf($('bc').value);let t;
   if(mode==='hog'){const hi=(1650+k*195)*1.19,top=(1650+k*260)*1.19;
-    t=m<=hi*1.1?`Tu boleta (${clp(m)}, ${clp(ef)}/kWh) está dentro del rango BT1 referencial de ${d}. Mantén vigilado el consumo de invierno.`:
-    `Pagaste ${clp(m-hi)} sobre el rango base BT1 esperado (≈${clp(hi)}). ${m>top*1.05?'Supera incluso la tarifa de sobreconsumo: revisa cobros adicionales o medidor.':'Es compatible con kWh en el tramo adicional de invierno ($225–$260/kWh).'}`}
+    t=m<=hi*1.1?`Tu boleta (${mono(clp(m))}, ${mono(clp(ef))}/kWh) está dentro del rango ${mono('BT1')} referencial de ${d}. Mantén vigilado el consumo de invierno.`:
+    `Pagaste ${mono(clp(m-hi))} sobre el rango base ${mono('BT1')} esperado (≈${mono(clp(hi))}). ${m>top*1.05?'Supera incluso la tarifa de sobreconsumo: revisa cobros adicionales o medidor.':`Es compatible con kWh en el tramo adicional de invierno (${mono('$225–$260 CLP/kWh')}).`}`}
   else{const lo=k*115*1.19,hi=k*135*1.19,r=m-hi,s=r/m;
-    t=m<lo?'El monto es menor a la energía esperada; verifica consumo o tarifa.':s>.45?`Energía esperada ≈${clp(lo)}–${clp(hi)}. Sobre eso quedan ${clp(r)} (${Math.round(s*100)} % de la boleta) en potencia y otros cargos: indicio de potencia contratada o leída en punta mal dimensionada.`:`Energía esperada ≈${clp(lo)}–${clp(hi)}; el resto (${Math.round(Math.max(s,0)*100)} %) es razonable. Revisa igual la demanda en punta 18:00–22:00.`}
-  o.innerHTML=t+'<small style="display:block;margin-top:8px;color:var(--muted)">Diagnóstico preliminar con rangos referenciales (IVA 19 % incluido); no reemplaza una auditoría.</small>'});
+    t=m<lo?'El monto es menor a la energía esperada; verifica consumo o tarifa.':s>.45?`Energía esperada ≈${mono(clp(lo))}–${mono(clp(hi))}. Sobre eso quedan ${mono(clp(r))} (${mono(Math.round(s*100)+' %')} de la boleta) en potencia y otros cargos: indicio de potencia contratada o leída en punta mal dimensionada.`:`Energía esperada ≈${mono(clp(lo))}–${mono(clp(hi))}; el resto (${mono(Math.round(Math.max(s,0)*100)+' %')}) es razonable. Revisa igual la demanda en punta ${mono('18:00–22:00')}.`}
+  o.innerHTML=t+`<small style="display:block;margin-top:8px;color:var(--muted)">Diagnóstico preliminar con rangos referenciales (IVA ${mono('19 %')} incluido); no reemplaza una auditoría.</small>`});
 const FREE=/@(gmail|hotmail|outlook|yahoo|live|icloud|msn|proton(mail)?|gmx)\./i;
 function wa(){const q=`Hola GeoGrid, soy ${$('fn').value||'(nombre)'} de ${$('fc').value} (${$('ft').value}). Quiero agendar una auditoría en terreno.`;$('wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(q)}`}
 ['fn','fc','ft'].forEach(i=>$(i).addEventListener('input',wa));wa();
@@ -375,7 +393,7 @@ $('f').addEventListener('submit',e=>{e.preventDefault();const em=$('fe').value.t
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){er.textContent='Ingresa un correo válido.';return}
   if($('ft').value==='Empresa / pyme'&&FREE.test(em)){er.textContent='Para empresas usa un correo corporativo (no gmail, hotmail, etc.).';return}
   $('ok').style.display='block'});
-document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>$('links').classList.remove('open')));
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>{$('links').classList.remove('open');document.querySelector('.menu').setAttribute('aria-expanded','false')}));
 calc();
 </script>
 <div id="report" aria-hidden="true"></div>
